@@ -1,6 +1,5 @@
 const axios = require('axios');
-const PouchDB = require('pouchdb');
-const db = new PouchDB('cdc-covid');
+const fs = require('fs');
 
 async function fetchData() {
   const response = await axios.get(
@@ -12,19 +11,18 @@ async function fetchData() {
     value: caseRawData[1][index]
   }));
   transformedData.unshift();
-  db.post({
-    snapshotData: transformedData,
-    date: new Date().getTime()
-  });
+  fs.writeFile(
+    `./db/${new Date().getTime()}.json`,
+    JSON.stringify(transformedData),
+    function(err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('The file was saved!');
+    }
+  );
 }
 
-async function showData() {
-  const data = await db.allDocs({ include_docs: true });
-  data.rows.map(dataRow => {
-    console.log(JSON.stringify(dataRow));
-    console.log('\n');
-  });
-}
+module.exports = fetchData;
 
-fetchData();
-showData();
+// fetchData();

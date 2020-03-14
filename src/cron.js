@@ -3,7 +3,7 @@ const fetch = require('./fetch');
 
 const job = new CronJob(
   '* * * * * *',
-  () => console.log('You will see this message every second'),
+  () => fetch(),
   null,
   true,
   'America/New_York'

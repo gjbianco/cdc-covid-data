@@ -1,4 +1,3 @@
 node_modules
 
-#current name of database
-cdc-covid
+db/*.json
