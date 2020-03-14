@@ -11,14 +11,16 @@ async function fetchData() {
     value: caseRawData[1][index]
   }));
   transformedData.unshift();
+
+  const filename = new Date().getTime();
   fs.writeFile(
-    `./db/${new Date().getTime()}.json`,
+    `./db/${filename}.json`,
     JSON.stringify(transformedData),
     function(err) {
       if (err) {
         return console.log(err);
       }
-      console.log('The file was saved!');
+      console.log(`The file ${filename} was saved!`);
     }
   );
 }
