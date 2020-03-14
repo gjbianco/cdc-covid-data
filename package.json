@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/cron.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Guy Bianco IV <gjbiancoiv@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
     "yarn": "^1.22.4"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.19.2",
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "pouchdb": "^7.2.1"
   }
 }
